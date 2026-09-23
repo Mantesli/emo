@@ -1,7 +1,6 @@
 ﻿# 问题一数据分析管线
 
-当前工程只建立分析代码骨架，不执行特征提取、时间戳（PTS）提取或
-manifest 构建，也不移动原始数据。
+工程提供原始数据清单构建、基础统计、时间戳（PTS）审计和帧数一致性检查脚本；脚本读取本地数据，并将结果写入 `outputs/`，不会移动原始数据。
 
 ## 数据处理流程
 
@@ -26,9 +25,7 @@ manifest 构建，也不移动原始数据。
 - `src/utils/video_utils.py`：提供视频文件枚举、路径校验和系统 `ffprobe`
   可用性检查；暂不进行复杂 PTS 提取。
 
-后续实现应先完成数据审计，再生成 manifest，并在此基础上进行统计、时间轴
-审计和特征/时序对齐。系统存在 `ffprobe` 时，直接调用系统可执行文件即可，
-不要求引入 Python ffmpeg 封装库。
+建议按顺序运行 `src/01_build_manifest.py`、`src/02_raw_statistics.py`、`src/03_timestamp_audit.py` 和 `src/04_frame_pts_consistency.py`。当前流程覆盖数据清单、统计和时间戳审计。系统存在 `ffprobe` 时，直接调用系统可执行文件即可，不要求引入 Python ffmpeg 封装库。
 
 ## 数据与版本管理
 
@@ -44,4 +41,5 @@ pip install -r requirements.txt
 ```
 
 部分时间戳分析脚本还需要系统安装 `ffprobe`，并确保它可从命令行调用。
+
 
