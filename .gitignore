@@ -1,0 +1,23 @@
+﻿# Python cache and compiled files
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local editor configuration
+.vscode/
+.idea/
+
+# Local source datasets (videos, labels, pickle files)
+/data1/
+/data2/
+/data3/
+/data4/
+
+# Generated reports, plots, logs, and timestamp arrays
+/outputs/**
+!/outputs/**/
+!/outputs/**/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
